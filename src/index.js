@@ -1,5 +1,5 @@
 module.exports = function check(str, bracketsConfig) {
-  var allBrackets = "()[]{}||",
+  var allBrackets = "()[]{}|",
       bracketsConfig = [];
       str = str.split('')
       
