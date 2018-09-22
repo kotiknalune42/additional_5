@@ -1,21 +1,27 @@
 module.exports = function check(str, bracketsConfig) {
-  var allBrackets = "()[]{}|",
-      bracketsConfig = [];
-      str = str.split('')
+  var tempArray = [],
+    lastArray,
+    bracketStr = String(bracketsConfig).split(',');
+
+  for (var i = 0; i < str.length; i++) {
+   
+    for (var j = 0; j < bracketStr.length; j += 2) {
+
+      if (str[i] == bracketStr[j + 1] && lastArray == bracketStr[j]) {
+        tempArray.pop();
+        lastArray = tempArray[tempArray.length - 1];
       
-  for (var i = 0, thing; thing = str[i]; i++) {
-    var searchString = allBrackets.indexOf(thing); //finds iteration(s) in bracketsConfig
-    if (searchString === -1) { // if not found
-      continue; // goes to next iteration
-    }
-    if (searchString % 2 === 0) { 
-        bracketsConfig.push(searchString + 1); 
-        // adds # of arrays depending on index of allBrackets
-    } else {
-      if (bracketsConfig.pop() !== searchString) {
-        //console.log(false);
+      } else if (str[i] == bracketStr[j]) {
+        tempArray.push(bracketStr[j]);
+        lastArray = tempArray[tempArray.length - 1];
+        break;
       }
+
     }
   }
-return bracketsConfig.length === 0;
+  if (str.length % 2) {
+    return false;
+  } else if (tempArray.length == 0) {
+    return true; 
+  } else return false;
 }
