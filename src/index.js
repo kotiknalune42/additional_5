@@ -14,7 +14,13 @@ let temporaryArray = [], checker,
         checker = temporaryArray[temporaryLen - 1];
         break;
       }
+
     }
-  } 
-return temporaryLen == 0
+  }
+  
+if (str.length % 2) {
+    return false;
+  } else {
+    return temporaryLen == 0;
+}
 }
