@@ -3,7 +3,7 @@ let len = str.length;
 if (len % 2 !== 0) {
     return false;
   }
-let temporary = [];
+let temporary = [],
 mask = str.split('');
     
   for (let i = 0; i < len; i++) {
