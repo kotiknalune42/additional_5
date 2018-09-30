@@ -15,5 +15,5 @@ mask = str.split('');
       }
     }
   }
- return (stack.length == 0);
+ return (temporary.length == 0);
 }
